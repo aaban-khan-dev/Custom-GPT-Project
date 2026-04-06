@@ -19,7 +19,7 @@ class AppConfig:
             raise ValueError("Configuration file is empty or not found.")
         
         if 'api' in config and 'key' in config['api']:
-            api_key = os.get_env('API_KEY')
+            api_key = os.getenv('GROQ_API_KEY')
 
             if not api_key:
                 raise ValueError("API key not found in environment variables.")
