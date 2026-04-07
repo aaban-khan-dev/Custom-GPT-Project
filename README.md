@@ -28,6 +28,7 @@ PWGPT is a lightweight, customizable AI chat application built using **Flask** a
 
 * Python
 * Flask
+* Rest API
 
 **AI Integration**
 
