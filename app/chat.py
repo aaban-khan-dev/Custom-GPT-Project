@@ -1,4 +1,5 @@
 from .api_client import GroqClient
+import re
 
 class ChatManager:
 
@@ -13,6 +14,10 @@ class ChatManager:
             "role": role,
             "content": content
         })
+
+    def remove_think_blocks(self,text):
+         return re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
+
 
     def get_response(self,user_message,model = None):
         """
@@ -29,10 +34,10 @@ class ChatManager:
         elif "explain" in user_message_lower:
             prompt = f"provide detailed explanation with examples of: {user_message}"
         
-        elif "code" in user_message_lower():
+        elif "code" in user_message_lower:
             prompt = f"provide code example for: {user_message}"
 
-        elif "compare" in user_message_lower():
+        elif "compare" in user_message_lower:
             prompt = f"compare and contrast: {user_message}"
         
         else:
@@ -41,6 +46,7 @@ class ChatManager:
         self.add_message("user", prompt)
 
         ai_response = self.client.get_response(self.conversation_history, model = model)
+        ai_response = self.remove_think_blocks(ai_response)
 
         self.add_message("assistant", ai_response)
 

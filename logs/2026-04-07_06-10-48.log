@@ -1,0 +1,3 @@
+[2026-04-07 06:10:49,384] logger - INFO - Flask application starting...
+[2026-04-07 06:10:49,416] werkzeug - WARNING -  * Debugger is active!
+[2026-04-07 06:10:49,421] werkzeug - INFO -  * Debugger PIN: 566-971-709

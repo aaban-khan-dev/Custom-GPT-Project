@@ -1,0 +1,6 @@
+[2026-04-07 05:52:38,713] logger - INFO - Flask application starting...
+[2026-04-07 05:52:38,726] werkzeug - WARNING -  * Debugger is active!
+[2026-04-07 05:52:38,734] werkzeug - INFO -  * Debugger PIN: 566-971-709
+[2026-04-07 05:52:40,313] werkzeug - INFO - 127.0.0.1 - - [07/Apr/2026 05:52:40] "GET / HTTP/1.1" 200 -
+[2026-04-07 05:52:40,390] werkzeug - INFO - 127.0.0.1 - - [07/Apr/2026 05:52:40] "[33mGET /static/images/Apexiq-logo-whitebg.jpeg HTTP/1.1[0m" 404 -
+[2026-04-07 05:52:40,575] werkzeug - INFO - 127.0.0.1 - - [07/Apr/2026 05:52:40] "GET /static/css/style.css HTTP/1.1" 200 -

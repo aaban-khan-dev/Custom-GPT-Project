@@ -1,0 +1,87 @@
+<!-- templates/chat.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tutor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header class="header">
+        <img src="{{ url_for('static', filename='images/Apexiq-logo-whitebg.jpeg') }}" alt="Logo" class="logo">
+        <h1>Multi-AI</h1>
+
+        <!-- ✅ Dropdown moved to top-right -->
+        <select id="model-select" class="model-dropdown">
+            <option value="qwen/qwen3-32b">Balanced (Qwen 32B)</option>
+            <option value="llama-3.1-8b-instant">Fast (Llama 8B)</option>
+            <option value="llama-3.3-70b-versatile">Powerful (Llama 70B)</option>
+        </select>
+    </header>
+
+    <main class="chat-area">
+
+        <div class="chat-box" id="chat-box">
+            <div class="ai-message">
+                <p>Welcome! How can I assist you today?</p>
+            </div>
+        </div>
+
+        <!-- ✅ Input row -->
+        <div class="input-area">
+            <textarea id="user-input" placeholder="Type your message here..."></textarea>
+            <button id="send-button">Send</button>
+        </div>
+
+    </main>
+
+    <script>
+        const sendBtn = document.getElementById('send-button');
+        const userInput = document.getElementById('user-input');
+        const chatBox = document.getElementById('chat-box');
+
+        function sendMessage() {
+            const message = userInput.value;
+            const model = document.getElementById('model-select').value;
+
+            if (message.trim() === "") return;
+
+            // User message
+            chatBox.innerHTML += `<div class="user-message"><p>${message}</p></div>`;
+            userInput.value = '';
+
+            fetch('/api/chat', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ message, model }),
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.response) {
+                    chatBox.innerHTML += `<div class="ai-message"><p>${data.response}</p></div>`;
+                } else {
+                    chatBox.innerHTML += `<div class="error-message"><p>${data.error}</p></div>`;
+                }
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(() => {
+                chatBox.innerHTML += `<div class="error-message"><p>Error communicating with server.</p></div>`;
+            });
+        }
+
+        // Click send
+        sendBtn.addEventListener('click', sendMessage);
+
+        // Press Enter to send
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+
+</body>
+</html>

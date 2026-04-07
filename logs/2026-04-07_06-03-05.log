@@ -1,0 +1,8 @@
+[2026-04-07 06:03:06,104] logger - INFO - Flask application starting...
+[2026-04-07 06:03:06,120] werkzeug - WARNING -  * Debugger is active!
+[2026-04-07 06:03:06,125] werkzeug - INFO -  * Debugger PIN: 566-971-709
+[2026-04-07 06:03:07,356] werkzeug - INFO - 127.0.0.1 - - [07/Apr/2026 06:03:07] "GET / HTTP/1.1" 200 -
+[2026-04-07 06:03:07,387] werkzeug - INFO - 127.0.0.1 - - [07/Apr/2026 06:03:07] "[33mGET /static/images/Apexiq-logo-whitebg.jpeg HTTP/1.1[0m" 404 -
+[2026-04-07 06:03:07,471] werkzeug - INFO - 127.0.0.1 - - [07/Apr/2026 06:03:07] "GET /static/css/style.css HTTP/1.1" 200 -
+[2026-04-07 06:03:14,556] werkzeug - INFO - 127.0.0.1 - - [07/Apr/2026 06:03:14] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+[2026-04-07 06:05:15,502] werkzeug - INFO -  * Detected change in 'D:\\Custom_GPT\\app\\chat.py', reloading
