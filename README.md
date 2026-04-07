@@ -67,8 +67,8 @@ Custom_GPT/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/pwgpt.git
-cd pwgpt
+git clone https://github.com/your-username/customAI.git
+cd customAI
 ```
 
 ### 2. Create virtual environment
